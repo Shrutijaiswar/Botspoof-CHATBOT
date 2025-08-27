@@ -20,9 +20,9 @@ This project is built with a modern and powerful tech stack:
 
 | Frontend                               | Backend                               |
 | -------------------------------------- | ------------------------------------- |
-| **Vite** | **Node.js** (or your backend tech)    |
-| **React / Vue.js** (specify yours)     | **Express.js** (or your framework)    |
-| **CSS / Tailwind CSS** (specify yours) | **WebSocket / Socket.IO** (for real-time) |
+| **Vite** | **Node.js**                 |
+| **React    | **Express.js**            |
+| ** Tailwind CSS** (specify yours)      | **WebSocket / Socket.IO** (for real-time) |
 | **Axios** (for API requests)           | **MongoDB / PostgreSQL** (your DB)    |
 
 ---
