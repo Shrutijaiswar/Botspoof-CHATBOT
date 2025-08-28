@@ -12,10 +12,14 @@ const port =process.env.PORT || 3000
 // middleware
 app.use(express.json());
 
-// Correct CORS Configuration with the new URL
-const frontendURL = "https://botspoof-chatbot-axzqbr90n.vercel.app";
+// Correct CORS Configuration to allow multiple URLs
+const allowedOrigins = [
+    "https://botspoof-chatbot.vercel.app",
+    "https://botspoof-chatbot-axzqbr90n.vercel.app"
+];
+
 app.use(cors({
-    origin: frontendURL
+    origin: allowedOrigins
 }));
 
 
