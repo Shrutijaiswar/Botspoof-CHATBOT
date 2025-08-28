@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import { FaUserCircle } from 'react-icons/fa'
+
 function Bot() {
     const [messages,setMessages]=useState([])
     const [input,setInput]=useState("")
@@ -15,9 +16,9 @@ function Bot() {
         setLoading(true);
         if(!input.trim()) return;
         try {
-           const res=await axios.post("http://localhost:4002/bot/v1/message",{
-                text: input
-            })
+           const res=await axios.post(`${import.meta.env.VITE_API_URL}/bot/v1/message`, {
+               text: input
+           })
             if(res.status === 200) {
                 setMessages([...messages, { text: res.data.userMessage, sender: 'user' }, { text: res.data.botMessage, sender: 'bot' }]);
                
@@ -32,7 +33,7 @@ function Bot() {
 
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') handleSendMessage()}
-            
+           
   return (
     <div className='flex flex-col min-h-screen bg-[#0d0d0d] text-white'>
          {/* Navbar & Header */}
@@ -72,7 +73,7 @@ function Bot() {
                   Bot is typing...
                 </div>
               )}
-           <div ref={messagesEndRef}/>
+            <div ref={messagesEndRef}/>
             </>
           )}
         </div>
@@ -87,11 +88,11 @@ function Bot() {
               className="flex-1 bg-transparent outline-none text-white placeholder-gray-400 px-2"
               placeholder="Ask BotSpoof..."
              value={input}
-             onChange={(e) => setInput(e.target.value)}
-             onKeyDown={handleKeyPress}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyPress}
             />
             <button
-             onClick={handleSendMessage}
+              onClick={handleSendMessage}
               className="bg-green-600 hover:bg-green-700 px-4 py-1 rounded-full text-white font-medium transition-colors"
             >
               Send
