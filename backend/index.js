@@ -11,7 +11,13 @@ const port =process.env.PORT || 3000
 
 // middleware
 app.use(express.json());
-app.use(cors())
+
+// Correct CORS Configuration
+const frontendURL = "https://botspoof-chatbot.vercel.app";
+app.use(cors({
+    origin: frontendURL
+}));
+
 
 //Database Connection code
 mongoose.connect(process.env.MONGO_URI)
@@ -28,6 +34,6 @@ mongoose.connect(process.env.MONGO_URI)
 app.use("/bot/v1/", chatbotRoutes)
 app.listen(port, () => {
 
-  console.log(`Server is Running on Port ${port}`)
+ console.log(`Server is Running on Port ${port}`)
 
 })
